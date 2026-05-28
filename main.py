@@ -40,8 +40,8 @@ def _init_db(conn: sqlite3.Connection) -> None:
         age INTEGER 
         )
 """
-
     cursor.execute(query)
+    conn.commit()
 
 
 if __name__ == "__main__":
@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
     # json_repo = JsonRepository("users.json")
     # user_service = UserService(json_repo)
-    with sqlite3.connect('users.db') as conn:
+    with sqlite3.connect("users.db") as conn:
         _init_db(conn)
         sqlite_repo = SQLiteRepository(conn)
         user_service = UserService(sqlite_repo)
