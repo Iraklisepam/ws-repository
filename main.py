@@ -24,7 +24,12 @@ class UserService:
         self.repository.save(user.__dict__)
 
     def find_by_email(self, email: str) -> User | None:
-        return User(**self.repository.find_by_email( email ))
+        data = self.repository.find_by_email(email)
+
+        if data is None:
+            return None
+
+        return User(**data)
 
 
 if __name__ == "__main__":
