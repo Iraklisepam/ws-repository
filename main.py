@@ -11,8 +11,8 @@ class User:
 
 
 class Repository(Protocol):
-    def save(self, user: dict) -> None: ...
-    def find_by_email(self, email: str) -> dict: ...
+    def save(self, data: dict) -> None: ...
+    def find_by_email(self, email: str) -> dict | None: ...
 
 
 class UserService:
@@ -22,8 +22,12 @@ class UserService:
     def register(self, user: User) -> None:
         self.repository.save(user.__dict__)
 
-    def find_by_email(self, email: str) -> User:
-        return User(**self.repository.find_by_email(email))
+    def find_by_email(self, email: str) -> User | None:
+        user = self.repository.find_by_email(email)
+        if user:
+            return User(**user)
+        else:
+            return None
 
 
 if __name__ == "__main__":

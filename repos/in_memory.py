@@ -1,12 +1,12 @@
 
 class InMemoryRepository:
     def __init__(self):
-        self.all_data = {}
+        self.users = {}
 
-    def save(self, data):
-        if data['email'] in self.all_data:
+    def save(self, data: dict) -> None:
+        if data['email'] in self.users:
             raise ValueError("duplicate email")
-        self.all_data[data['email']] = data
+        self.users[data['email']] = data
 
-    def find_by_email(self, email):
-        return self.all_data.get(email)
+    def find_by_email(self, email: str) -> dict | None:
+        return self.users.get(email, None)
