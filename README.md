@@ -1,32 +1,24 @@
+# ws-repository
 
-# Create virtual environment and activate
-## Create venv
-```bash
-python -m venv .venv
-```
+## Installation
 
-## Windows
-```bash
-.\.venv\Scripts\activate.bat 
-```
-## Linux / Mac
-```bash
-source .venv/bin/activate
-```
-
-## install 
+```sh
 pip install -r requirements.txt
+```
 
------------------
+## Usage
 
+```sh
+python -m repo
+```
 
+## Testing
 
-# TODO
+Run the following command in the project root:
 
-## Fix
-- Fix current warning on main.py, line 33 (Install [MyPy](https://marketplace.visualstudio.com/items?itemName=ms-python.mypy-type-checker) extension to see)
+```sh
+python -m pytest
+```
 
-
-## Extend
-- Extend functionality with SQLite repository
-- Add unit test
+It is important to run the pytest calling it explicitly as a Python module,
+otherwise it will not be able to pick up the imports.

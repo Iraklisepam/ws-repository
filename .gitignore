@@ -4,3 +4,7 @@ __pycache__/*
 *.pyo
 *.pyd
 *.json
+*.db
+
+# The file in which I write commit messages
+commit.msg
